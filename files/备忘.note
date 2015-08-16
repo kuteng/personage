@@ -1,0 +1,66 @@
+﻿
+[diff]
+    tool = bc3
+	external = bcompare
+[difftool]
+    prompt = false
+[difftool "bc3"]
+    #use cygpath to transform cygwin path $LOCAL (something like /tmp/U5VvP1_abc) to windows path, because bc3 is a windows software
+    #cmd = \"c:/program files/beyond compare 3/bcomp.exe\" "$(cygpath -w $LOCAL)" "$REMOTE"
+    cmd = \"C:/Program Files (x86)/Beyond Compare 4/BCompare.exe\" "$(cygpath -w $LOCAL)" "$REMOTE"
+[merge]
+    tool = bc3
+[mergetool]
+    prompt = false
+[mergetool "bc3"]
+    #trustExitCode = true
+    #cmd = \"c:/program files/beyond compare 3/bcomp.exe\" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+    cmd = \"C:/Program Files (x86)/Beyond Compare 4/BCompare.exe\" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+    
+
+在[git]/etc/gitconfig文件内添加如下内容：
+----------------------------------------------
+[diff]
+	external = bcompare
+----------------------------------------------
+此方法只能是比较实用bcompare，不能使合并使用bcompare！
+
+
+[diff "astextplain"]
+	textconv = astextplain
+	
+==================================================================
+2015年8月16日：笔记本
+
+下载了新的git仓库。
+https://github.com/gmarik/vundle.git
+https://github.com/derekwyatt/vim-scala.git
+
+-------------------------
+如何给gvim添加新的编译器呢？我要添加的是sbt编译器。
+sbt是针对java和scala的编译器。那么scala也自带编译器吧！
+
+-------------------------
+UltraEdit中，突然粘贴复制不好使，可能是无意中按了快捷键“Ctrl + [NUM]”，激活了Windows中的其他剪切板。
+
+-------------------------
+Chrome
+切换标签使用：Ctrl + [NUM].
+快速定位地址栏使用：Ctrl + L 或 Alt + D
+关闭标签页使用：Ctrl + F4
+打开主页：Alt + Home
+
+-------------------------
+gvim 快捷键
+上翻页：Ctrl + b
+下翻页：Ctrl + f
+
+0  是数目字 0 而不是英文字母 o。或是 Hmoe 键，移至行首，
+^  移至第一个非空白字元，注意，要 Shift 键。
+$  移至行尾，或 End 键。要 Shift 键。
+
+-------------------------
+
+-------------------------
+
+-------------------------
