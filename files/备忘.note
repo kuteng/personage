@@ -1,7 +1,91 @@
-﻿FAuthentication.java: 488
+﻿1  Grid的展现效率，后台运算量。1天。
+2  Grid的打开效果。
+3  重写Tree方法 + 搜索逻辑。
+4  Ajax上传文件。
+5. 布局。
+6. Grid上的缩进。
+
+
+
+本周任务：
+周四：门户进入系列页面
+周五：解决定时任务与其他页面冲突的问题。
+
+
+定时任务与其他页面的冲突，应该是对我的一个挑战，我应该去迎接它，而非逃避。
+
+
+===============================================
+JavaScript中foreach的语法如下，其中，dix为数组data的下标。
+   for(var idx in data) {
+
+===============================================
+fx：移动光标到当前行的下一个x处。很明显，x可以是任意一个字母，而且你可以使用;来重复你的上一个f命令。
+
+===============================================
+MiniBufExplorer：
+d     删除当前光标所在buffer
+:bn   切换到下一个buffere
+:bp   切换到上一个buffer
+:b[n] 切换到第N个buffer
+
+===============================================
+应该找个机会，让系统可以传输二维数组，在系统如下地方，我们都是通过间接方式做到的。
+   系统设置。
+   adminTitle的menu列表的遍历。
+
+家里太有钱，老是担心被偷，于是我把wifi 修改成无密码，然后放心上班，每天回家看到十几个蹭网的蹲我家门口帮我看门！
+当年楼主幼儿园毕业的时候表演节目合唱（世上只有妈妈好）上台前老师把每个人屁股都打了一巴掌，还不准我们哭等到上台越唱越委屈，边唱边哭，感动了全场观众，掌声雷动。
+小学老师和一位家长谈话，有了你的儿子，我上课可以不用看表了，看他一眼就知道时间了。第3分钟开始用胳膊支着头，第5分钟开始玩笔，第10分钟开始趴在桌上了，第15分钟那就肯定睡着了……最厉害是下课前3分钟一定会醒来收拾文具盒，然后我就知道快下课了，我也准备做收尾工作了。家长一脸黑线……
+甲：“你为什么长这么矮” 已：“因为我恐高” 甲：“你长这么矮，有什么感觉吗” 已：“让所有人见了我，都台不起头” 甲：………………
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. 修改adminTitle.html界面，恒定绑定中间灰色条。
+2. 监控系统的左侧列表，Tree需要怎么获得？
+3. 日志管理
+
+问题
+1. 中间横条（灰色），需要与计划任务一样。
+2. 如果二级管理员登录系统，他只有访问“认证授权”的权限。其他两个模块怎么处理，消失或者不可用？
+
+================================================================
+FAuthentication.java: 488
 UserRep.java
 SecureReq.java
 
+================================================================
+工程里的标记是：
+// @temp by peter
+
+================================================================
+突然发现，我对产品添加新功能有很强烈的抵制情绪，怎么会这样？什么时候出现的？怎么消除它？
+这似乎与我长时间处于被动地位有关系。我应该怎么调整过来？
+我应该自己总结产品不断添加的新功能。既然在这个过程中，我无法于参与中得到积极的情绪，我就用从学习总结中得到的满足感来填补它。
+
+================================================================
+产品的功能。
+   权限管理中，添加了统计功能。使用dashboard，将用户具有哪些角色、角色被赋予哪些用户等都暂时出来了。
+   讲一些常用配置项从bi.properties中移到了界面中。
+   当用户登录界面发现licence过期是，出现新的弹出框，让用户输入新的licence。而不是让用户其bi.properties中配置。
 
 ================================================================
 在AbstractRep.java中，方法Asset: getAsset()方法并不好。
@@ -19,7 +103,7 @@ SecureReq.java
 ================================================================
 在vim的_vimrc文件中代码“nmap wm :WMToggle<cr>”是失效的
 
-=================================================================
+=================================================================================================================================
 修改C:\windows\gvim.bat,源文件已备份：gvim-副本.bat1
 将start "dummy" /b "%VIM_EXE_DIR%\gvim.exe"  %*
 改为 start "dummy" /b "%VIM_EXE_DIR%\gvim.exe"  %cd%/%*
@@ -30,34 +114,33 @@ SecureReq.java
 
 =================================================================
 [diff]
-    tool = bc3
-	external = bcompare
+   tool = bc3
+   external = bcompare
 [difftool]
-    prompt = false
+   prompt = false
 [difftool "bc3"]
-    #use cygpath to transform cygwin path $LOCAL (something like /tmp/U5VvP1_abc) to windows path, because bc3 is a windows software
-    #cmd = \"c:/program files/beyond compare 3/bcomp.exe\" "$(cygpath -w $LOCAL)" "$REMOTE"
-    cmd = \"C:/Program Files (x86)/Beyond Compare 4/BCompare.exe\" "$(cygpath -w $LOCAL)" "$REMOTE"
+   #use cygpath to transform cygwin path $LOCAL (something like /tmp/U5VvP1_abc) to windows path, because bc3 is a windows software
+   #cmd = \"c:/program files/beyond compare 3/bcomp.exe\" "$(cygpath -w $LOCAL)" "$REMOTE"
+   cmd = \"C:/Program Files (x86)/Beyond Compare 4/BCompare.exe\" "$(cygpath -w $LOCAL)" "$REMOTE"
 [merge]
-    tool = bc3
+   tool = bc3
 [mergetool]
-    prompt = false
+   prompt = false
 [mergetool "bc3"]
-    #trustExitCode = true
-    #cmd = \"c:/program files/beyond compare 3/bcomp.exe\" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
-    cmd = \"C:/Program Files (x86)/Beyond Compare 4/BCompare.exe\" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
-    
+   #trustExitCode = true
+   #cmd = \"c:/program files/beyond compare 3/bcomp.exe\" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+   cmd = \"C:/Program Files (x86)/Beyond Compare 4/BCompare.exe\" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 
 在[git]/etc/gitconfig文件内添加如下内容：
 ----------------------------------------------
+
 [diff]
-	external = bcompare
+   external = bcompare
 ----------------------------------------------
 此方法只能是比较实用bcompare，不能使合并使用bcompare！
 
-
 [diff "astextplain"]
-	textconv = astextplain
+   textconv = astextplain
 	
 ==================================================================
 2015年8月16日：笔记本
@@ -130,9 +213,9 @@ N	搜索反方向的下一个文本或单词
 
 --------------------------------------------------
 DOS模式显示正确中文文件名
-    【实现目标】 操作系统是Windows 98，有时在DOS下复制文件，可是有的文件或文件夹名是中文的，因此显示为乱码。
+  【实现目标】 操作系统是Windows 98，有时在DOS下复制文件，可是有的文件或文件夹名是中文的，因此显示为乱码。
 
-    【操作方法】 其实Windows 98对DOS下中文的支持是很不错的，可以在DOS提示符下输入“pdos95”，然后按【Enter】键，即可看到已进入了中文DOS模式，可以按【Ctrl+Shift】键来切换输入法输入中文。【相关知识】 “pdos95”是一个批处理文件，其位置在“Windows\Command”文件夹中。 
+  【操作方法】 其实Windows 98对DOS下中文的支持是很不错的，可以在DOS提示符下输入“pdos95”，然后按【Enter】键，即可看到已进入了中文DOS模式，可以按【Ctrl+Shift】键来切换输入法输入中文。【相关知识】 “pdos95”是一个批处理文件，其位置在“Windows\Command”文件夹中。 
 
 --------------------------------------------------
 windows自定义快捷键备忘
