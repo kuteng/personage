@@ -72,7 +72,103 @@ K：在Man里面查找光标当前所在处的词。
 :marks　　查看当前设置的所有标签。
 ``    返回跳转之前的标签。
 
+===============================================
+VIM 读书笔记
+   :e fileName 实际上可以是edit的简写
+   :w 是write的简写
+   :e! fileName 可以强行对齐当前修改，进入新文件
+   :hide edit fileName 这样可以打开新的文件同时，将当前编辑的文件放入缓冲区（即使它没有被保存）
 
+   vim file1 file2 file3 这样可以在启动vim是编辑多个文件。当然，打开vim后，只会显示一个文件。
+   :next 之后可以通过此命令，切换到下一个文件。但在此之前，需要保存之前修改。
+   :wnext 保存并切换到另一个文件。
+   类似的命令还有：previous, wprevious, last, first, 2next.
+
+   :args 可以查看整个文件列表中有几个文件。此命令为arguments的简写。
+   :args files 可以重新定义文件列表
+
+   :set autowrite(noautowrite) 设置自动存盘或者禁用自动存盘。
+
+   Ctrl + ^可以在两个文件之间切换。
+
+   `" 到上次你离开当前文件光标所在位置。
+   `。最后一次对当前文档进行的改动处。
+
+   mx("x") 作为标记，只在本文件内生效。m为mark的缩写，应该是。
+   mX 即使用大写字母，他们为全局标记
+   做标记的技巧：
+      50%mF:   在文档中间做标记
+      GmB:     在文档最后做标记
+   :marks M 查看标记M的内容
+   :marks MCP 查看标记为M, C, P的内容
+
+   :set backup 设置备份
+   :set backupext=.bat  设置备份的文件后缀。
+
+   :set pathmode=.orig  设置备份原始版本文件后缀。如果为空，则原始文件备份不会执行。
+
+   vjjjj$y  选择内容并复制。
+   V     当前行单行复制。
+   yaw   即yank a word，复制一个单词。
+   yas   复制一个句子。
+
+   p     将粘贴内容放在光标之后。
+   P     将粘贴内容放在光标之前。
+   
+   "fyas 复制一个句子放入寄存器f
+   "l3Y  复制单行放入寄存器
+   "fp   将寄存器f中的内容粘贴出来
+   "wdaw 删除一个word，并将它粘贴到剪切板w。
+
+   :write >> logfile   将当前文件的内容，追加到文件logfile。
+
+   vim -R file 以只读模式运行vim。
+   vim -M file 此模式（viewer）下，任何对文件的修改都会报错。
+   但在viewer下，下面两个命令可以解除这里两层限制。
+      :set modifiable
+      :set write
+
+   :saveas fileName  另存为。
+   :file fileName    重命名。
+
+   分隔窗口。
+   :split
+   Ctrl-w w  切换窗口，和Ctrl-w Ctrl-w 一样。
+   :close   关闭当前窗口。
+   :only    关闭出当前窗口外的所有窗口。
+   :split fileName
+   Ctrl-W +    增加当前窗口高度
+   4 Ctrl-W +  增加当前窗口4个高度。
+   6 Ctrl-w _  设置当前窗口的高度
+   winheight, winminheight, winwidth, winminwidth。
+
+   :vsplit  垂直分割。
+   :vnew
+   Ctrl-w [h, j, k, l, t, b]
+
+   Ctrl-w K 将当前窗口向上提升一次
+   类似命令还有Ctrl-w J, Ctrl-w H, Ctrl-w L
+   :qall
+   :wall
+   :wqall
+   :qall!
+
+   vim -o file1 file2 file3   水平分割。
+   vim -O file1 file2 file3   垂直分割。
+
+   vimdiff file1 file2
+
+   :vertical diffsplit main.c 分割一个垂直窗口，一比较当前文件与main.c的不同
+   :set noscrollbind 禁用同步滚动
+
+   ]c    跳到下一个不同之处。
+   [c    跳到上一个不同之处。
+
+   :diffupdate
+   dp
+   do
+
+   页签？
 
 ===============================================
 ：
@@ -107,9 +203,18 @@ vertical-align
 local key:
    index.system
    旧的三个模块的local.
+   Audit
+   LOGSHOW
+   Data
+   Security
+   asset.import
+   asset.export
+   system.description
+   $.AssetRef.ACTION_MANAGE 等是否删除
 
 ===========================
 对于任务界面的设计，不能那么做，不然我就相当于维护两套设计了。
+大阅兵进入倒计时 航天军工等三类概念股显露“升”机:中航机电
 
 
 
