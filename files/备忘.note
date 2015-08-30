@@ -11,7 +11,110 @@
 周四：门户进入系列页面
 周五：解决定时任务与其他页面冲突的问题。
 
+===============================================
+技巧性使用svn checkout代码。
+cd G:\YH
+svn checkout --depth=empty svn://venus/mnt/sda3/SVNRepository/project/bi codes
+cd codes
+svn up --depth=empty trunk branch
+cd trunk
+svn up src
+...
+...
+这样就可以避免冗余的检出了！
 
+===============================================
+vim 自定义宏
+@n：添加注释。
+@2：消除注释。
+
+[n]G     跳转到指定行。
+:[n]     跳转到指定行。
+
+gj       跳转到下一折行（一行内）
+gk       类似
+
+关于tab
+   :tabn[n]  切换指定tab
+   :tabs     列出所有tab
+   gt        切换tab
+
+   424,456 s/span/div/g 替换从424行到456行出现先的所有span，改为div。
+   424,456 s/\<span\>/div/g 替换从424行到456行出现先的所有单词span，改为div。其中"\<"表示单词的开头，"\>"表示单词结束
+
+   R        替换字符，知道按Esc为止
+
+u        恢复上一个操作
+cw       更改光标所在处的字到字尾$处
+#w    如：c3w代表更改三个字。
+
+Ctrl + G 列出所在行行号。
+#G       如13G，跳到十三行
+:cddirectory 将当前工作目录更改为directory所表示的目录
+:map     在状态行显示所有已定义的宏。
+:umapkey 删除该键的宏。
+
+q:    打开命令行历史记录
+:pwd  查看当前工作路径。
+:r !grep -S someString *.html
+===============================================
+[[ = 移动到前一个行首的'{'字符上， 等价于?^{
+]] = 移动到下一个行首的'{'字符上， 等价于/^{
+[] = 移动到前一个行首的'}'字符上， 等价于?^}
+][ = 移动到下一个行首的'}'字符上， 等价于?^}
+{ = 到前一个空行上
+} = 到下一个空行上
+gd = 到当前局部变量的定义处(当前的意思是光标停留其上的单词).
+* = 到与当前单词相同的下一个单词上
+# = 到与当前单词相同的上一个单词上
+'' = 到上次光标停靠的行
+
+===============================================
+SVN快捷
+查看某历史版本的修改：svn diff -r ridx:(ridx-1)，如：
+   svn diff -r 27558:27557
+
+===============================================
+vim切换标签
+   [n]gt    其中n为标签的id。
+
+vim删除缓冲区
+   :bd[n]    其中n为缓冲区idx，注意：Vim还是会记住它. 实际上它被打入"unlisted"列表中":buffers!"(或":ls!")还是会让它再度现身。
+   :bwipe    彻底删除一个缓冲区，具体查看buflisted。应该可以简写为“:bw[n]”
+
+===============================================
+备忘记事
+
+完善svnpeter。
+   如何构造如：svnpeter -r h -t v -l 20 这样的命令。
+   dos中，如何判断第n个参数是否为空？
+
+===============================================
+台式机操作
+将系统变量Path中[Git]/bin;改为了[Git]/cmd;。
+
+因为git中的grep.exe与grep-windows中的grep.exe冲突。而且[Git]/bin/grep.exe并不好使。——但我在dos中，直接使用grep命令时。
+但是这样就用不了git grep命令了。
+
+当然我也可以将grep-windows中的grep.exe改为wgrep.exe。
+
+===============================================
+svn 中depth各个取值的意义。
+代表四种检出深度：
+ 
+1、Fully recursive——全递归：检出完整的目录树，包含所有的文件或子目录。
+2、Immediate children,including folders——直接子节点，包含文件夹：检出目录，包含其中的文件或子目录，但是不递归展开子目录。
+3、Only file chlidren——仅文件子节点：检出指定目录，包含所有文件，但是不检出任何子目录。
+4、Only this item——仅此项：只检出目录。不包含其中的文件或子目录。
+
+===============================================
+169MB
+182MB
+===============================================
+今天和chenny的讨论，教训：
+   有问题我就应该直接了当的说出来，在他说window.name的默认值是null时，我就应该直接站出来反对，window.name的默认值是""，而不是“委婉”的找个所谓的间接方法。
+
+===============================================
 定时任务与其他页面的冲突，应该是对我的一个挑战，我应该去迎接它，而非逃避。
 
 
@@ -29,7 +132,8 @@ http://easwy.com/blog/archives/advanced-vim-skills-netrw-bufexplorer-winmanager-
 
 :ls 可以查看当前打开的缓冲区。然后使用“b[n]”打开指定缓冲区
 
-
+vim 调用系统变量“:e $gitFolder”
+vim 文件浏览器：“:edit .” “Explore” 或者 Ctrl-O
 
 Vim中，~是什么意思？“:e ~src/vim70/src/”并没有打开目录
 
@@ -105,7 +209,7 @@ VIM 读书笔记
    :set backup 设置备份
    :set backupext=.bat  设置备份的文件后缀。
 
-   :set pathmode=.orig  设置备份原始版本文件后缀。如果为空，则原始文件备份不会执行。
+   :set patchmode=.orig  设置备份原始版本文件后缀。如果为空，则原始文件备份不会执行。
 
    vjjjj$y  选择内容并复制。
    V     当前行单行复制。
@@ -121,13 +225,7 @@ VIM 读书笔记
    "wdaw 删除一个word，并将它粘贴到剪切板w。
 
    :write >> logfile   将当前文件的内容，追加到文件logfile。
-
-   vim -R file 以只读模式运行vim。
-   vim -M file 此模式（viewer）下，任何对文件的修改都会报错。
-   但在viewer下，下面两个命令可以解除这里两层限制。
-      :set modifiable
-      :set write
-
+vim -R file 以只读模式运行vim。 vim -M file 此模式（viewer）下，任何对文件的修改都会报错。 但在viewer下，下面两个命令可以解除这里两层限制。 :set modifiable :set write 
    :saveas fileName  另存为。
    :file fileName    重命名。
 
@@ -141,6 +239,11 @@ VIM 读书笔记
    4 Ctrl-W +  增加当前窗口4个高度。
    6 Ctrl-w _  设置当前窗口的高度
    winheight, winminheight, winwidth, winminwidth。
+
+   Ctrl-w = 所有窗口平均分配。
+   Ctrl-w > 当前窗口宽度增加。
+   Ctrl-w < 当前窗口宽度减少。
+   Ctrl-w | 当前窗口宽度调到最大。
 
    :vsplit  垂直分割。
    :vnew
@@ -170,6 +273,16 @@ VIM 读书笔记
 
    页签？
 
+   gf    需要作用在文件名上。
+   :find 后加文件名。
+   :set path=.   设置搜索的范围
+===============================================
+自定义快捷键
+Ctrl + Alt + F1: Vim
+Ctrl + Alt + F2: UE
+Ctrl + Alt + F3: MyEclipse
+Ctrl + Alt + F4: DOS
+Ctrl + Alt + F5: Chrome
 ===============================================
 ：
 d     删除当前光标所在buffer
@@ -177,6 +290,9 @@ d     删除当前光标所在buffer
 :bp   切换到上一个buffer
 :b[n] 切换到第N个buffer
 
+===============================================
+命令行中
+grep --help 是得到帮助信息
 ===============================================
 Windows系统，可以通过Win + [num]快速实现窗口切换
 以后尽量保证这样一个顺序：
@@ -323,6 +439,14 @@ SecureReq.java
 =================================================================
 如果需要查看修改的文件的话：svn log -l 20 -q -v
 查看远程log：svn log -r HEAD:BASE -q -l 20
+         svn log -r head:base -l 100 --search peter
+获取URL  svn info | grep -i 'url'
+
+=================================================================
+文件浏览器排序规则：
+
+netrw.vim
+let g:netrw_sort_sequence=
 
 =================================================================
 [diff]
