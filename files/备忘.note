@@ -5,6 +5,12 @@
 5. 布局。
 6. Grid上的缩进。
 
+备忘：
+1. sysData: 背景颜色的验证，及“#”号不能被删除
+2. 5.5切换到6.0时，可能重现system没有出来的Bug。
+3. 上传文件，加图片。图片在UI中:[UI]/gif/fileUploading.gif
+4. 5.5, 5.6：当隐藏“home+logout”时，adminTitle布局会变乱。—— 火狐
+5. tomcat热启动
 
 
 本周任务：
@@ -22,6 +28,54 @@ svn up src
 ...
 ...
 这样就可以避免冗余的检出了！
+
+===============================================
+svn 提交，选择性提交
+   G:\YH\codes>svn status -q > modified.note
+   G:\YH\codes>vim modified.note
+   G:\YH\codes>svn ci --targets modified.note
+
+相关知识——vim在window如何进行列编辑。
+   删除列：Ctrl-q，然后选择适当的矩形区域，然后按d。
+
+svn 显示远程目录列表
+   svn list
+
+===============================================
+DOS 创建目录
+   md folderName
+
+dos 操作的历史文件
+   环境变脸%dos%，如：svn status -q %dos%
+
+===============================================
+Tomcat 热启动。
+config/context.xml
+   <Context reloadable="true">
+config/server.xml
+   <Host name="localhost" debug="0" appBase="webapps" unpackWARs="true" autoDeploy="true" xmlValidation="false" xmlNamespaceAware="false">
+   在host节点内加入: <Context path="/trunk" docBase="trunk" debug="99" reloadable="true"/>
+如此即可
+
+===============================================
+持续集成工具U：
+   Jenkins, 其前身为hudson。
+===============================================
+Vim 获得函数列表。
+   :Tlist 打开或关闭函数列表
+
+Vim 探索当前文件所在目录
+   :Explore[!]
+
+Vim 返回浏览器
+   :Rexplore[!]
+
+Vim 更改
+   g:netrw_keepdir，缺省为 1。该设置意味着当前目录不会跟踪浏览目录。为 0 告诉 netrw 使 vim 的当前目录跟踪 netrw 的浏览目录。
+   c  在目录中按“c”看是浏览目录设为当前目录。
+
+Vim 标记文件
+   mf 标记文件
 
 ===============================================
 vim 自定义宏
@@ -57,6 +111,44 @@ Ctrl + G 列出所在行行号。
 q:    打开命令行历史记录
 :pwd  查看当前工作路径。
 :r !grep -S someString *.html
+===============================================
+white-space:   css属性，作用于html中的空白
+===============================================
+目录中的操作：
+a     隐藏/显示文件和目录
+X     执行某个文件   newtrw-W
+gf    打开文件方式打开目标
+gd    打开目录方式打开目标
+x/gx  使用系统管理器打开目录
+o     新开一个窗口打开文件（上方）。
+t     新标签打开目标
+v     新开一个窗口打开目标（left）
+p     在预览窗口打开。
+P     在上一个窗口打开
+i     修改文件列表系统
+u     回到之前的目录
+U     ...
+
+mb,gb,mB,qb    netrw-mb, metrw-gb
+
+:12Vexplore 左侧垂直打开文件文件浏览器
+
+:help netrw-mf    查看mf的后续用法
+:ve         得出一个似乎很有用的结果
+
+<cr>  表示换行符
+
+:e    兼有搜索功能，可惜我不会用。请查看:help Explore
+      提示，正则表达式可能需要这样写：\.[ch]$
+
+操作备忘
+Ctrl - T 调回刚才的标签Tag
+Ctrl - O 调回刚才的标签Tag
+
+修改本地化帮助配置。
+:h help
+
+
 ===============================================
 [[ = 移动到前一个行首的'{'字符上， 等价于?^{
 ]] = 移动到下一个行首的'{'字符上， 等价于/^{
